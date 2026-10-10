@@ -1,39 +1,39 @@
-# 4A0X1 CDC Study Guide — Redesign
+# 4A0X1 Study Guide
 
-A full visual redesign of [builtbysai/4a0x1-study-guide](https://github.com/builtbysai/4a0x1-study-guide)
-(the Air Force 4A0X1 Health Services Management CDC quiz app). The original repo is untouched;
-this is a standalone re-skin built to kill AI-slop patterns.
+<img src="assets/hero.svg" alt="4A0X1 Study Guide — Air Force CDC quiz app" width="800" />
 
-## Design thesis — "Flight line at dawn"
+<img src="assets/app-preview.png" alt="4A0X1 Study Guide app — real quiz session (Module 1 question, local dev run)" width="800" />
 
-A study tool for airmen prepping for high-stakes CDC exams should feel like a calm mission brief,
-not a casino. Warm paper (`#F6F3EA`), ink blue-black (`#1A2332`), one brass accent (`#8C6D1B`),
-pine for correct, brick for incorrect. Barlow Condensed display / Barlow body / IBM Plex Mono
-labels — all self-hosted, no CDN. Real typographic hierarchy (size, space, weight contrast),
-a deliberate 4/6/10px radius system, purposeful iconography only where it aids scanning,
-and human copy with no em-dash stuffing. Dark mode is a proper night-study theme, not a toggle.
+A quiz and study app for the Air Force 4A0X1 (Health Services Management) Career Development Courses — 200 practice questions across the 5-level and 7-level CDCs, with quiz sessions, missed-question review, and progress stats.
 
-## What changed
+## Question banks
 
-- **Visual layer only** — all quiz logic, spaced repetition, store, and question data are untouched.
-- Killed: bold-everything headlines, 27 decorative lucide icons, rounded-2xl everywhere, em-dash copy.
-- New: mission-brief home, ledger-style module list, calm session UI, typographic stats,
-  recolored confetti, self-hosted type.
+| Course | Questions | Structure |
+|---|---|---|
+| CDC 4A051 — Health Services Management Journeyman (5-level) | 150 | 11 modules |
+| CDC 4A071N Vol. 1 — Health Services Management Craftsman (7-level) | 50 | 16 lessons |
 
-## Develop
+## Features
+
+- **Quiz sessions** — timed or untimed, by module or mixed
+- **Missed-question review** — drill the ones you got wrong until they stick
+- **Progress stats** — track scores over time
+- **Themes** — light, dark, and system
+- **Offline-friendly** — question banks ship with the app
+
+## Run locally
 
 ```bash
 npm install
-npm run dev        # local dev
-npm run build      # production build (base '/')
+npm run dev
 ```
 
-## Deploy (GitHub Pages, project site)
+Production build: `npm run build` (output in `dist/`; the included `netlify.toml` handles SPA routing on Netlify).
 
-```bash
-GH_BASE=/4a0x1-study-guide-redesign/ npm run build
-cp dist/index.html dist/404.html   # SPA fallback
-# push dist/ to the gh-pages branch
-```
+## Tech
 
-Live: https://builtbysai.github.io/4a0x1-study-guide-redesign/
+React 18 + TypeScript + Vite + Tailwind CSS. No backend — all state lives in the browser.
+
+---
+
+*Built by [Hans Sai](https://builtbysai.com) — USAF Reserve, 4A0X1.*

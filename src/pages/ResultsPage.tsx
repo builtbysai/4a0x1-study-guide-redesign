@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   RotateCcw, Home, ChevronDown, ChevronUp,
-} from 'lucide-react';
+} from '../components/icons';
 import { clsx } from 'clsx';
 import confetti from 'canvas-confetti';
 import { useAppStore, QUESTION_MAP, confirmSessionReplacement } from '../store/useAppStore';

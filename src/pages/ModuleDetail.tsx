@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from '../components/icons';
 import { useAppStore, confirmSessionReplacement } from '../store/useAppStore';
 import { calcGroupProgress, getMissedQuestions, pct } from '../utils/dataHelpers';
 import { InkButton, Button, ProgressBar, StatCard, LevelBadge } from '../components/ui';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, BookOpen, Zap, AlertCircle, BarChart2, Settings, Bookmark } from 'lucide-react';
+import { Home, BookOpen, Zap, AlertCircle, BarChart2, Settings, Bookmark } from '../icons';
 import { clsx } from 'clsx';
 import { useAppStore } from '../../store/useAppStore';
 import { getMissedQuestions, getReviewQuestions } from '../../utils/dataHelpers';

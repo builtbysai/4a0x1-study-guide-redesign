@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight } from '../components/icons';
 import { clsx } from 'clsx';
 import { useAppStore } from '../store/useAppStore';
 import { calcGroupProgress, getGroupNumbers, pct, formatDate } from '../utils/dataHelpers';

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Download, Upload, Trash2, AlertTriangle, ExternalLink } from 'lucide-react';
+import { Download, Upload, Trash2, AlertTriangle, ExternalLink } from '../components/icons';
 import { clsx } from 'clsx';
 import { useAppStore } from '../store/useAppStore';
 import { exportUserData, importUserData } from '../utils/storage';

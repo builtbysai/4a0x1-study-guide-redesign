@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight } from '../components/icons';
 import { useAppStore } from '../store/useAppStore';
 import { calcGroupProgress, getMissedQuestions, getGroupNumbers, pct } from '../utils/dataHelpers';
 import { ProgressBar, LevelBadge, InkButton } from '../components/ui';

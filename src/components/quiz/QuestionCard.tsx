@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bookmark, Star, Flag } from 'lucide-react';
+import { Bookmark, Star, Flag } from '../icons';
 import { clsx } from 'clsx';
 import type { Question, SessionQuestion, QuestionProgress, AnswerKey } from '../../types';
 import { AnswerButton } from './AnswerButton';

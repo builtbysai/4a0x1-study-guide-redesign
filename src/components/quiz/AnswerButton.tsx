@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Check, X } from 'lucide-react';
+import { Check, X } from '../icons';
 import { clsx } from 'clsx';
 import type { AnswerKey } from '../../types';
 

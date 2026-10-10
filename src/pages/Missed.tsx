@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw } from '../components/icons';
 import { clsx } from 'clsx';
 import { useAppStore, confirmSessionReplacement } from '../store/useAppStore';
 import { getMissedQuestions } from '../utils/dataHelpers';

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { X } from 'lucide-react';
+import { X } from '../components/icons';
 import { clsx } from 'clsx';
 import { useAppStore, QUESTION_MAP, confirmSessionReplacement } from '../store/useAppStore';
 import { getReviewQuestions } from '../utils/dataHelpers';

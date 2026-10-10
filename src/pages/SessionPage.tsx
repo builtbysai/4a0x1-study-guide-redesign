@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, CheckSquare, X, Clock, Trash2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckSquare, X, Trash2 } from '../components/icons';
 import { clsx } from 'clsx';
 import confetti from 'canvas-confetti';
 import { useAppStore, QUESTION_MAP } from '../store/useAppStore';

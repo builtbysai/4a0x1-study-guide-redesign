@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight } from '../components/icons';
 import { useAppStore } from '../store/useAppStore';
 import { calcGroupProgress, getGroupNumbers, pct, getMasteredQuestions } from '../utils/dataHelpers';
 import { Card, StatCard, ProgressBar, Badge, LevelBadge } from '../components/ui';
