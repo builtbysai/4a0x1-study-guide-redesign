@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --surface:        253 251 244;
+    --surface-raised: 236 231 216;
+    --bg:             246 243 234;
+    --bg-subtle:      238 233 220;
+    --border:         219 212 190;
+    --text:           26 35 50;
+    --text-muted:     93 102 117;
+    --text-subtle:    141 148 160;
+    --brass:          140 109 27;
+    --brass-deep:     116 90 22;
+    --pine:           46 125 79;
+    --brick:          179 53 43;
+  }
+
+  .dark {
+    --surface:        24 33 50;
+    --surface-raised: 34 46 66;
+    --bg:             15 21 34;
+    --bg-subtle:      20 28 44;
+    --border:         48 62 86;
+    --text:           235 238 242;
+    --text-muted:     148 160 178;
+    --text-subtle:    110 122 140;
+    --brass:          217 169 59;
+    --brass-deep:     232 190 92;
+    --pine:           96 190 130;
+    --brick:         224 110 96;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+  }
+
+  body {
+    font-family: 'Barlow', system-ui, sans-serif;
+    background-color: rgb(var(--bg));
+    color: rgb(var(--text));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  .bg-app        { background-color: rgb(var(--bg)); }
+  .bg-subtle     { background-color: rgb(var(--bg-subtle)); }
+  .bg-raised     { background-color: rgb(var(--surface-raised)); }
+  .border-app    { border-color: rgb(var(--border)); }
+  .text-app      { color: rgb(var(--text)); }
+  .text-muted    { color: rgb(var(--text-muted)); }
+  .text-subtle   { color: rgb(var(--text-subtle)); }
+
+  /* Kicker / eyebrow label */
+  .kicker {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--text-muted));
+  }
+
+  .safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 0.5rem); }
+  .safe-top    { padding-top:    env(safe-area-inset-top); }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+
+@keyframes progressFill {
+  from { width: 0%; }
+}
+.progress-fill { animation: progressFill 0.4s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
