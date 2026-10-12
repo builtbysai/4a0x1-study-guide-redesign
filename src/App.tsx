@@ -1,6 +1,8 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { Layout }      from './components/layout/Layout';
+import { Splash }       from './components/onboarding/Splash';
+import { Intro }        from './components/onboarding/Intro';
 import { Home }        from './pages/Home';
 import { Modules }     from './pages/Modules';
 import { ModuleDetail } from './pages/ModuleDetail';
@@ -89,6 +91,44 @@ const NotFound: React.FC = () => {
   );
 };
 
+// ─── First-run boot gate: splash, then intro (once) ────────────────────────
+
+const INTRO_SEEN_KEY = '4a0x1-intro-seen';
+
+function introSeen(): boolean {
+  try {
+    return window.localStorage.getItem(INTRO_SEEN_KEY) === '1';
+  } catch {
+    return true;
+  }
+}
+
+function markIntroSeen(): void {
+  try {
+    window.localStorage.setItem(INTRO_SEEN_KEY, '1');
+  } catch {
+    /* storage unavailable — intro simply shows again next launch */
+  }
+}
+
+const BootGate: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [phase, setPhase] = useState<'splash' | 'intro' | 'app'>(() => 'splash');
+
+  const handleSplashDone = () => setPhase(introSeen() ? 'app' : 'intro');
+  const handleIntroDone = () => {
+    markIntroSeen();
+    setPhase('app');
+  };
+
+  return (
+    <>
+      {children}
+      {phase === 'splash' && <Splash onDone={handleSplashDone} />}
+      {phase === 'intro' && <Intro onDone={handleIntroDone} />}
+    </>
+  );
+};
+
 // ─── Routes ───────────────────────────────────────────────────────────────
 
 const AppRoutes: React.FC = () => {
@@ -121,7 +161,9 @@ const AppRoutes: React.FC = () => {
 export const App: React.FC = () => (
   <BrowserRouter basename={import.meta.env.BASE_URL}>
     <ErrorBoundary>
-      <AppRoutes />
+      <BootGate>
+        <AppRoutes />
+      </BootGate>
     </ErrorBoundary>
   </BrowserRouter>
 );

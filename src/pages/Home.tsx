@@ -117,19 +117,31 @@ export const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Stat strip — typographic, no icons */}
-      <div className="grid grid-cols-4 gap-px mt-4 bg-app border border-app rounded-card overflow-hidden">
-        {[
-          { label: 'Seen',     value: `${stats.totalSeen}` },
-          { label: 'Mastered', value: `${stats.totalMastered}` },
-          { label: 'Missed',   value: `${stats.totalMissed}` },
-          { label: 'Accuracy', value: `${stats.accuracy}%` },
-        ].map(s => (
-          <div key={s.label} className="bg-surface px-3 py-4 text-center">
-            <div className="font-display text-[26px] leading-none text-app">{s.value}</div>
-            <div className="kicker mt-1.5">{s.label}</div>
-          </div>
-        ))}
+      {/* Stat strip — tappable, opens the full stats screen */}
+      <div className="mt-8">
+        <button
+          onClick={() => navigate('/stats')}
+          aria-label="View detailed stats"
+          className="w-full text-left group"
+        >
+          <span className="flex items-center justify-between mb-2">
+            <span className="kicker">Stats</span>
+            <ChevronRight size={14} className="text-subtle group-hover:text-app transition-colors" />
+          </span>
+          <span className="grid grid-cols-4 gap-px bg-app border border-app rounded-card overflow-hidden group-hover:border-muted transition-colors">
+            {[
+              { label: 'Seen',     value: `${stats.totalSeen}` },
+              { label: 'Mastered', value: `${stats.totalMastered}` },
+              { label: 'Missed',   value: `${stats.totalMissed}` },
+              { label: 'Accuracy', value: `${stats.accuracy}%` },
+            ].map(s => (
+              <span key={s.label} className="bg-surface px-3 py-4 text-center block">
+                <span className="font-display text-[26px] leading-none text-app block">{s.value}</span>
+                <span className="kicker mt-1.5 block">{s.label}</span>
+              </span>
+            ))}
+          </span>
+        </button>
       </div>
 
       {/* Weakest area */}
