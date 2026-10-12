@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Barlow Condensed"', '"Arial Narrow"', 'sans-serif'],
+        display: ['"Newsreader"', 'Georgia', 'serif'],
         body:    ['"Barlow"', 'system-ui', 'sans-serif'],
         mono:    ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
@@ -15,12 +15,12 @@ export default {
         appbg:   'rgb(var(--bg) / <alpha-value>)',
         subtle:  'rgb(var(--bg-subtle) / <alpha-value>)',
         border:  'rgb(var(--border) / <alpha-value>)',
-        brass: {
-          DEFAULT: 'rgb(var(--brass) / <alpha-value>)',
-          deep:    'rgb(var(--brass-deep) / <alpha-value>)',
+        accent: {
+          DEFAULT: 'rgb(var(--accent) / <alpha-value>)',
+          deep:    'rgb(var(--accent-deep) / <alpha-value>)',
         },
-        pine:   'rgb(var(--pine) / <alpha-value>)',
-        brick:  'rgb(var(--brick) / <alpha-value>)',
+        correct: 'rgb(var(--correct) / <alpha-value>)',
+        wrong:   'rgb(var(--wrong) / <alpha-value>)',
       },
       borderRadius: {
         card: '10px',

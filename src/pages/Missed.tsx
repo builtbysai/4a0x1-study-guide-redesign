@@ -84,7 +84,7 @@ export const Missed: React.FC = () => {
             onClick={() => setFilter(key)}
             className={clsx(
               'flex-shrink-0 px-3.5 h-9 rounded-ctl text-sm font-medium transition-colors',
-              filter === key ? 'bg-[#1A2332] text-[#F6F3EA] dark:bg-[#E8E4D4] dark:text-[#1A2332]' : 'bg-surface border border-app text-muted hover:text-app'
+              filter === key ? 'bg-accent text-white dark:text-[#171512]' : 'bg-surface border border-app text-muted hover:text-app'
             )}
           >
             {label}
@@ -98,7 +98,7 @@ export const Missed: React.FC = () => {
             onClick={() => setSelectedGroup(null)}
             className={clsx(
               'px-3 h-8 rounded-ctl text-xs font-mono uppercase tracking-wider border transition-colors',
-              !selectedGroup ? 'bg-[#1A2332] text-[#F6F3EA] border-transparent dark:bg-[#E8E4D4] dark:text-[#1A2332]' : 'bg-surface border-app text-muted hover:text-app'
+              !selectedGroup ? 'bg-accent text-white dark:text-[#171512] border-transparent' : 'bg-surface border-app text-muted hover:text-app'
             )}
           >All</button>
           {missedGroups.map(g => (
@@ -108,7 +108,7 @@ export const Missed: React.FC = () => {
               className={clsx(
                 'px-3 h-8 rounded-ctl text-xs font-mono uppercase tracking-wider border transition-colors',
                 selectedGroup?.level === g.level && selectedGroup?.num === g.num
-                  ? 'bg-[#1A2332] text-[#F6F3EA] border-transparent dark:bg-[#E8E4D4] dark:text-[#1A2332]'
+                  ? 'bg-accent text-white dark:text-[#171512] border-transparent'
                   : 'bg-surface border-app text-muted hover:text-app'
               )}
             >
@@ -142,8 +142,8 @@ export const Missed: React.FC = () => {
                 <p className="text-[15px] text-app line-clamp-2">{q.text}</p>
                 {p?.lastAnswer && (
                   <p className="font-mono text-xs text-muted mt-1.5">
-                    You answered <span className="text-brick font-semibold uppercase">{p.lastAnswer}</span>
-                    {q.correctAnswer && <> · Correct <span className="text-pine font-semibold uppercase">{q.correctAnswer}</span></>}
+                    You answered <span className="text-wrong font-semibold uppercase">{p.lastAnswer}</span>
+                    {q.correctAnswer && <> · Correct <span className="text-correct font-semibold uppercase">{q.correctAnswer}</span></>}
                   </p>
                 )}
               </div>
@@ -151,7 +151,7 @@ export const Missed: React.FC = () => {
                 onClick={() => resetQuestionProgress(q.id)}
                 aria-label="Reset progress for this question"
                 title="Reset mastery"
-                className="flex-shrink-0 p-2 rounded-ctl text-subtle hover:text-brick hover:bg-brick/10 transition-colors"
+                className="flex-shrink-0 p-2 rounded-ctl text-subtle hover:text-wrong hover:bg-wrong/10 transition-colors"
               >
                 <RefreshCw size={14} />
               </button>

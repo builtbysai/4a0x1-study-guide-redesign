@@ -107,7 +107,7 @@ export const ReviewPage: React.FC = () => {
             className={clsx(
               'px-3.5 h-9 rounded-ctl text-xs font-mono uppercase tracking-wider border transition-colors',
               levelFilter === lvl
-                ? 'bg-[#1A2332] text-[#F6F3EA] border-transparent dark:bg-[#E8E4D4] dark:text-[#1A2332]'
+                ? 'bg-accent text-white dark:text-[#171512] border-transparent'
                 : 'bg-surface border-app text-muted hover:text-app'
             )}
           >
@@ -118,7 +118,7 @@ export const ReviewPage: React.FC = () => {
         <select
           value={sort}
           onChange={e => setSort(e.target.value as SortKey)}
-          className="ml-auto h-9 px-2 bg-surface border border-app rounded-ctl text-xs text-app focus:outline-none focus:ring-2 focus:ring-brass"
+          className="ml-auto h-9 px-2 bg-surface border border-app rounded-ctl text-xs text-app focus:outline-none focus:ring-2 focus:ring-accent"
           aria-label="Sort bookmarks"
         >
           <option value="due">Due date</option>
@@ -139,7 +139,7 @@ export const ReviewPage: React.FC = () => {
       {dueCount > 0 && (
         <button
           onClick={startDueOnly}
-          className="w-full mb-5 flex items-center justify-between bg-brass/10 border border-brass/40 rounded-card px-5 py-4 text-left hover:bg-brass/15 transition-colors"
+          className="w-full mb-5 flex items-center justify-between bg-accent/10 border border-accent/40 rounded-card px-5 py-4 text-left hover:bg-accent/15 transition-colors"
         >
           <div>
             <div className="font-display text-xl tracking-wide text-app">
@@ -149,7 +149,7 @@ export const ReviewPage: React.FC = () => {
               Spaced repetition · these are ready now
             </div>
           </div>
-          <span className="font-mono text-xs text-brass-deep">Start →</span>
+          <span className="font-mono text-xs text-accent-deep">Start →</span>
         </button>
       )}
 
@@ -165,15 +165,15 @@ export const ReviewPage: React.FC = () => {
                   <span className="font-mono text-[11px] text-subtle uppercase tracking-wider">{q.groupLabel} {q.groupNumber} · Q{q.questionNumber}</span>
                   <span className={clsx(
                     'font-mono text-[10px] uppercase tracking-wider',
-                    due.urgent ? 'text-brass-deep' : 'text-subtle'
+                    due.urgent ? 'text-accent-deep' : 'text-subtle'
                   )}>
                     {due.label}
                   </span>
                   {p?.status === 'mastered' && (
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-pine">Mastered</span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-correct">Mastered</span>
                   )}
                   {p?.status === 'incorrect' && (
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-brick">Needs work</span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-wrong">Needs work</span>
                   )}
                 </div>
                 <p className="text-[15px] text-app line-clamp-2">{q.text}</p>
@@ -187,7 +187,7 @@ export const ReviewPage: React.FC = () => {
                 onClick={() => removeBookmark(q.id)}
                 aria-label="Remove bookmark"
                 title="Remove from review list"
-                className="flex-shrink-0 p-2 rounded-ctl text-subtle hover:text-brick hover:bg-brick/10 transition-colors"
+                className="flex-shrink-0 p-2 rounded-ctl text-subtle hover:text-wrong hover:bg-wrong/10 transition-colors"
               >
                 <X size={14} />
               </button>

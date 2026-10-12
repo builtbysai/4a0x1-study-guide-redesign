@@ -200,7 +200,7 @@ export const SessionPage: React.FC = () => {
       celebratedRef.current.add(currentQ.id);
       confetti({
         particleCount: 80, spread: 70, origin: { y: 0.7 },
-        colors: ['#8C6D1B', '#2E7D4F', '#F6F3EA'],
+        colors: ['#2C4A73', '#3D7A52', '#F8F5EE'],
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -279,14 +279,14 @@ export const SessionPage: React.FC = () => {
 
   // Progress dot colors
   const getDotColor = (idx: number, sq: typeof currentSQ) => {
-    if (idx === session.currentIndex) return 'bg-brass scale-125';
+    if (idx === session.currentIndex) return 'bg-accent scale-125';
     if (sq.selectedAnswer !== null || sq.timedOut) {
       if (showFeedbackImmediately) {
-        if (sq.isCorrect === true)  return 'bg-pine';
-        if (sq.isCorrect === false) return 'bg-brick';
+        if (sq.isCorrect === true)  return 'bg-correct';
+        if (sq.isCorrect === false) return 'bg-wrong';
         return 'bg-subtle';
       }
-      return 'bg-brass-deep';
+      return 'bg-accent-deep';
     }
     return 'bg-raised border border-app';
   };
@@ -321,7 +321,7 @@ export const SessionPage: React.FC = () => {
               onClick={() => navigate('/')}
               className="p-1.5 rounded-ctl hover:bg-raised text-muted hover:text-app transition-colors flex-shrink-0"
               aria-label="Pause session — returns to home, session stays saved"
-              title="Pause — resume later from home"
+              title="Pause: resume later from home"
             >
               <X size={18} />
             </button>
@@ -337,7 +337,7 @@ export const SessionPage: React.FC = () => {
             {session.timedMode && timeLeft !== null && (
               <div className={clsx(
                 'font-mono text-sm px-2 py-1 rounded-ctl flex-shrink-0',
-                timeLeft <= 5 ? 'text-brick bg-brick/10' : 'text-muted'
+                timeLeft <= 5 ? 'text-wrong bg-wrong/10' : 'text-muted'
               )}>
                 {timeLeft}s
               </div>
@@ -345,7 +345,7 @@ export const SessionPage: React.FC = () => {
 
             <button
               onClick={() => setShowAbandon(true)}
-              className="p-1.5 rounded-ctl hover:bg-brick/10 text-subtle hover:text-brick transition-colors flex-shrink-0"
+              className="p-1.5 rounded-ctl hover:bg-wrong/10 text-subtle hover:text-wrong transition-colors flex-shrink-0"
               aria-label="Abandon session"
               title="Abandon session"
             >
@@ -359,7 +359,7 @@ export const SessionPage: React.FC = () => {
             </span>
             <LevelBadge level={session.level} />
             {!showFeedbackImmediately && (
-              <span className="font-mono text-[11px] uppercase tracking-widest text-brass-deep">
+              <span className="font-mono text-[11px] uppercase tracking-widest text-accent-deep">
                 Results at end
               </span>
             )}
@@ -430,9 +430,9 @@ export const SessionPage: React.FC = () => {
               disabled={!hasAnswered}
               className={clsx(
                 'flex items-center gap-1.5 px-6 h-11 rounded-ctl font-semibold text-[15px] transition-colors flex-shrink-0',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                 hasAnswered
-                  ? 'bg-[#1A2332] text-[#F6F3EA] dark:bg-[#E8E4D4] dark:text-[#1A2332] hover:opacity-90'
+                  ? 'bg-accent text-white dark:text-[#171512] hover:opacity-90'
                   : 'bg-raised text-subtle cursor-not-allowed'
               )}
               aria-label="Next question"
@@ -446,7 +446,7 @@ export const SessionPage: React.FC = () => {
 
       {storageError && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] max-w-sm w-full px-4">
-          <div className="bg-brick text-white text-sm rounded-ctl px-4 py-3 flex items-center gap-3">
+          <div className="bg-wrong text-white text-sm rounded-ctl px-4 py-3 flex items-center gap-3">
             <span className="flex-1">{storageError}</span>
             <button onClick={clearStorageError} className="font-bold text-white/80 hover:text-white flex-shrink-0">✕</button>
           </div>

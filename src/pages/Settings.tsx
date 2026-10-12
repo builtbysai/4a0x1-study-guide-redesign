@@ -55,7 +55,7 @@ export const Settings: React.FC = () => {
                 key={opt.value}
                 onClick={() => setTheme(opt.value)}
                 className={clsx(
-                  'px-5 h-10 rounded-[4px] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass',
+                  'px-5 h-10 rounded-[4px] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                   theme === opt.value
                     ? 'bg-surface text-app shadow-sm'
                     : 'text-muted hover:text-app'
@@ -114,9 +114,9 @@ export const Settings: React.FC = () => {
                     key={sec}
                     onClick={() => updateSettings({ timerSeconds: sec })}
                     className={clsx(
-                      'px-3 py-1.5 rounded-ctl text-xs font-display font-semibold border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass',
+                      'px-3 py-1.5 rounded-ctl text-xs font-display font-semibold border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                       settings.timerSeconds === sec
-                        ? 'bg-[#1A2332] text-[#F6F3EA] border-transparent dark:bg-[#E8E4D4] dark:text-[#1A2332]'
+                        ? 'bg-accent text-white dark:text-[#171512] border-transparent'
                         : 'border-border text-muted hover:border-muted'
                     )}
                   >
@@ -145,9 +145,9 @@ export const Settings: React.FC = () => {
                 key={label}
                 onClick={() => updateSettings({ sessionLimit: value })}
                 className={clsx(
-                  'px-3 py-1.5 rounded-ctl text-xs font-display font-semibold border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass',
+                  'px-3 py-1.5 rounded-ctl text-xs font-display font-semibold border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                   settings.sessionLimit === value
-                    ? 'bg-[#1A2332] text-[#F6F3EA] border-transparent dark:bg-[#E8E4D4] dark:text-[#1A2332]'
+                    ? 'bg-accent text-white dark:text-[#171512] border-transparent'
                     : 'border-border text-muted hover:border-muted'
                 )}
               >
@@ -229,8 +229,8 @@ export const Settings: React.FC = () => {
             <Upload size={16} /> Import Progress
           </Button>
           <input ref={fileRef} type="file" accept=".json" className="hidden" onChange={handleImport} />
-          {imported    && <p className="text-pine text-xs text-center">✓ Progress imported successfully</p>}
-          {importError && <p className="text-brick text-xs text-center">{importError}</p>}
+          {imported    && <p className="text-correct text-xs text-center">✓ Progress imported successfully</p>}
+          {importError && <p className="text-wrong text-xs text-center">{importError}</p>}
         </div>
       </div>
 
@@ -239,8 +239,8 @@ export const Settings: React.FC = () => {
         <SectionHeader title="Danger Zone" />
         <div className="flex flex-col gap-2">
           {confirmReset ? (
-            <Card className="border-brick/40 bg-brick/10">
-              <div className="flex items-center gap-2 mb-3 text-brick">
+            <Card className="border-wrong/40 bg-wrong/10">
+              <div className="flex items-center gap-2 mb-3 text-wrong">
                 <AlertTriangle size={16} />
                 <span className="font-display font-semibold text-sm">
                   Reset {confirmReset === 'all' ? 'all' : `${confirmReset} only`} progress? This cannot be undone.
@@ -255,10 +255,10 @@ export const Settings: React.FC = () => {
             </Card>
           ) : (
             <>
-              <Button variant="secondary" fullWidth onClick={() => setConfirmReset('5-level')} className="gap-2 text-brick border-red-200 dark:border-red-800">
+              <Button variant="secondary" fullWidth onClick={() => setConfirmReset('5-level')} className="gap-2 text-wrong border-red-200 dark:border-red-800">
                 <Trash2 size={16} /> Reset 5-Level Progress
               </Button>
-              <Button variant="secondary" fullWidth onClick={() => setConfirmReset('7-level')} className="gap-2 text-brick border-red-200 dark:border-red-800">
+              <Button variant="secondary" fullWidth onClick={() => setConfirmReset('7-level')} className="gap-2 text-wrong border-red-200 dark:border-red-800">
                 <Trash2 size={16} /> Reset 7-Level Progress
               </Button>
               <Button variant="danger" fullWidth onClick={() => setConfirmReset('all')}>

@@ -40,16 +40,16 @@ export const BottomNav: React.FC = () => {
           >
             {({ isActive }) => (
               <>
-                {isActive && <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[3px] bg-brass rounded-b" aria-hidden />}
+                {isActive && <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[3px] bg-accent rounded-b" aria-hidden />}
                 <div className="relative">
-                  <Icon size={19} strokeWidth={isActive ? 2.2 : 1.7} className={isActive ? 'text-brass-deep' : ''} />
+                  <Icon size={19} strokeWidth={isActive ? 2.2 : 1.7} className={isActive ? 'text-accent-deep' : ''} />
                   {label === 'Missed' && missedCount > 0 && (
-                    <span className="absolute -top-1 -right-1 min-w-[14px] h-[14px] px-0.5 bg-brick text-white text-[8px] font-mono rounded-full flex items-center justify-center leading-none">
+                    <span className="absolute -top-1 -right-1 min-w-[14px] h-[14px] px-0.5 bg-wrong text-white text-[8px] font-mono rounded-full flex items-center justify-center leading-none">
                       {missedCount > 99 ? '99+' : missedCount}
                     </span>
                   )}
                   {label === 'Review' && reviewCount > 0 && (
-                    <span className="absolute -top-1 -right-1 min-w-[14px] h-[14px] px-0.5 bg-brass text-white text-[8px] font-mono rounded-full flex items-center justify-center leading-none">
+                    <span className="absolute -top-1 -right-1 min-w-[14px] h-[14px] px-0.5 bg-accent text-white text-[8px] font-mono rounded-full flex items-center justify-center leading-none">
                       {reviewCount > 99 ? '99+' : reviewCount}
                     </span>
                   )}

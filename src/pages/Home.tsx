@@ -79,22 +79,20 @@ export const Home: React.FC = () => {
 
   return (
     <div className="max-w-2xl mx-auto px-5 pt-10 pb-6 animate-fade-in">
-      {/* Mission brief header */}
-      <div className="kicker mb-2">{today} · <LevelBadge level={activeLevel} /></div>
-      <h1 className="font-display text-[52px] leading-[0.95] text-app tracking-wide">
-        Ready for<br />today's drill.
+      <div className="kicker mb-3">{today} · <LevelBadge level={activeLevel} /></div>
+      <h1 className="font-display text-[44px] leading-[1.05] text-app">
+        {stats.totalSeen === 0 ? 'Start at the beginning.' : 'Pick up where you left off.'}
       </h1>
       <p className="text-muted mt-3 max-w-md">
         {stats.total} questions in the bank
-        {stats.streak > 0 ? ` · ${stats.streak}-day streak going` : ''}.
-        Pick up where you left off.
+        {stats.streak > 0 ? ` · ${stats.streak}-day streak` : ''}.
       </p>
 
       {/* Resume session */}
       {hasActiveSession && sessionProgress && (
         <button
           onClick={() => navigate('/session')}
-          className="w-full mt-6 flex items-center gap-4 bg-surface border-2 border-brass rounded-card px-5 py-4 text-left hover:bg-subtle transition-colors"
+          className="w-full mt-6 flex items-center gap-4 bg-surface border-2 border-accent rounded-card px-5 py-4 text-left hover:bg-subtle transition-colors"
         >
           <div className="flex-1 min-w-0">
             <div className="font-display text-xl tracking-wide text-app">Resume session</div>
@@ -102,7 +100,7 @@ export const Home: React.FC = () => {
               {sessionProgress.answered}/{sessionProgress.total} answered · {pct(sessionProgress.answered, sessionProgress.total)}% complete
             </div>
           </div>
-          <ChevronRight size={18} className="text-brass-deep flex-shrink-0" />
+          <ChevronRight size={18} className="text-accent-deep flex-shrink-0" />
         </button>
       )}
 
@@ -160,7 +158,7 @@ export const Home: React.FC = () => {
             <button
               key={lvl}
               onClick={() => setActiveLevel(lvl)}
-              className={`px-3 sm:px-4 h-9 rounded-[4px] text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass ${
+              className={`px-3 sm:px-4 h-9 rounded-[4px] text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                 activeLevel === lvl ? 'bg-surface text-app shadow-sm' : 'text-muted hover:text-app'
               }`}
             >
@@ -183,7 +181,7 @@ export const Home: React.FC = () => {
 
       <div className="mt-8">
         <InkButton fullWidth onClick={() => navigate('/quiz')}>
-          Begin today's session
+          Start studying
         </InkButton>
       </div>
 
@@ -208,8 +206,8 @@ const ActionRow: React.FC<{ title: string; sub: string; onClick: () => void; cou
         <div className="text-sm text-muted">{sub}</div>
       </div>
       {typeof count === 'number' && count > 0 && (
-        <span className="font-mono text-xs bg-brick text-white px-2 py-0.5 rounded-ctl">{count}</span>
+        <span className="font-mono text-xs bg-wrong text-white px-2 py-0.5 rounded-ctl">{count}</span>
       )}
-      <ChevronRight size={17} className={primary ? 'text-brass-deep' : 'text-subtle'} />
+      <ChevronRight size={17} className={primary ? 'text-accent-deep' : 'text-subtle'} />
     </button>
   );
