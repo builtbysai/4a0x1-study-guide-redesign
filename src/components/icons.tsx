@@ -199,3 +199,11 @@ export const ExternalLink = make(
     <path d="M18.5 13.5v6h-13v-13h6" />
   </>
 );
+
+export const More = make(
+  <>
+    <circle cx="5" cy="12" r="1.1" fill="currentColor" stroke="none" />
+    <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none" />
+    <circle cx="19" cy="12" r="1.1" fill="currentColor" stroke="none" />
+  </>
+);
