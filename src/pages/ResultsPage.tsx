@@ -39,7 +39,7 @@ export const ResultsPage: React.FC = () => {
     if (scorePct >= 80 && userData.settings.animationsEnabled) {
       confetti({
         particleCount: 120, spread: 90, origin: { y: 0.6 },
-        colors: ['#8C6D1B', '#2E7D4F', '#F6F3EA'],
+        colors: ['#2C4A73', '#3D7A52', '#F8F5EE'],
       });
     }
   }, [score, scorePct, userData.settings.animationsEnabled]);
@@ -55,8 +55,8 @@ export const ResultsPage: React.FC = () => {
     );
   }
 
-  const grade = scorePct >= 90 ? 'Exam ready' : scorePct >= 75 ? 'Strong' : scorePct >= 60 ? 'Getting there' : 'Keep drilling';
-  const gradeColor = scorePct >= 90 ? 'text-pine' : scorePct >= 75 ? 'text-app' : scorePct >= 60 ? 'text-brass-deep' : 'text-brick';
+  const grade = scorePct >= 90 ? 'Exam ready' : scorePct >= 75 ? 'Strong' : scorePct >= 60 ? 'Getting there' : 'Keep going';
+  const gradeColor = scorePct >= 90 ? 'text-correct' : scorePct >= 75 ? 'text-app' : scorePct >= 60 ? 'text-accent-deep' : 'text-wrong';
 
   const reviewQuestions = displaySession.questions.filter(sq => {
     if (reviewFilter === 'correct')   return sq.isCorrect === true;
@@ -99,13 +99,13 @@ export const ResultsPage: React.FC = () => {
           <div className="font-display text-3xl tracking-wide text-app mt-1">{grade}</div>
 
           <div className="flex justify-center gap-6 mt-5 font-mono text-xs text-muted">
-            <span><span className="text-pine font-semibold">{score.correct}</span> correct</span>
-            <span><span className="text-brick font-semibold">{score.incorrect}</span> incorrect</span>
+            <span><span className="text-correct font-semibold">{score.correct}</span> correct</span>
+            <span><span className="text-wrong font-semibold">{score.incorrect}</span> incorrect</span>
             {score.unanswered > 0 && <span><span className="font-semibold">{score.unanswered}</span> skipped</span>}
           </div>
 
           {score.unscorableCount > 0 && (
-            <div className="mt-3 text-xs text-brass-deep">
+            <div className="mt-3 text-xs text-accent-deep">
               {score.unscorableCount} unscored (no official answer key)
             </div>
           )}
@@ -128,7 +128,7 @@ export const ResultsPage: React.FC = () => {
         <div className="flex flex-col gap-3 mb-8">
           {retryIds.length > 0 && (
             <Button size="lg" fullWidth onClick={retryMissed} variant="danger">
-              <RotateCcw size={16} /> Drill the {retryIds.length} missed
+              <RotateCcw size={16} /> Review the {retryIds.length} missed
             </Button>
           )}
           <div className="grid grid-cols-2 gap-3">
@@ -161,7 +161,7 @@ export const ResultsPage: React.FC = () => {
                   className={clsx(
                     'px-3.5 h-9 rounded-ctl text-xs font-mono uppercase tracking-wider transition-colors',
                     reviewFilter === f
-                      ? 'bg-[#1A2332] text-[#F6F3EA] dark:bg-[#E8E4D4] dark:text-[#1A2332]'
+                      ? 'bg-accent text-white dark:text-[#171512]'
                       : 'bg-surface border border-app text-muted hover:text-app'
                   )}
                 >
@@ -193,7 +193,7 @@ const ReviewItem: React.FC<{ sq: SessionQuestion }> = ({ sq }) => {
   if (!q) return null;
 
   const isWrong = sq.isCorrect === false || sq.timedOut;
-  const mark = sq.isCorrect === true ? 'text-pine' : isWrong ? 'text-brick' : 'text-subtle';
+  const mark = sq.isCorrect === true ? 'text-correct' : isWrong ? 'text-wrong' : 'text-subtle';
   const markLabel = sq.isCorrect === true ? '✓' : isWrong ? '✕' : '–';
 
   return (
@@ -207,7 +207,7 @@ const ReviewItem: React.FC<{ sq: SessionQuestion }> = ({ sq }) => {
         <div className="flex-1 min-w-0">
           <p className="font-mono text-[11px] text-subtle uppercase tracking-wider mb-0.5">
             {q.groupLabel} {q.groupNumber} · Q{q.questionNumber}
-            {sq.timedOut && <span className="ml-1 text-brick">(timed out)</span>}
+            {sq.timedOut && <span className="ml-1 text-wrong">(timed out)</span>}
           </p>
           <p className="text-[15px] text-app truncate">{q.text}</p>
         </div>
@@ -224,9 +224,9 @@ const ReviewItem: React.FC<{ sq: SessionQuestion }> = ({ sq }) => {
                 <div key={key} className={clsx(
                   'flex items-start gap-2 px-3 py-2 rounded-ctl text-sm border-l-2',
                   key === q.correctAnswer
-                    ? 'border-pine bg-pine/10 text-app'
+                    ? 'border-correct bg-correct/10 text-app'
                     : key === sq.selectedAnswer && key !== q.correctAnswer
-                    ? 'border-brick bg-brick/10 text-app'
+                    ? 'border-wrong bg-wrong/10 text-app'
                     : 'border-transparent text-muted'
                 )}>
                   <span className="font-mono uppercase w-4 flex-shrink-0">{key}</span>
@@ -235,7 +235,7 @@ const ReviewItem: React.FC<{ sq: SessionQuestion }> = ({ sq }) => {
               ))}
           </div>
           {sq.timedOut && (
-            <p className="font-mono text-[11px] text-brick mt-2">Time expired — no answer selected</p>
+            <p className="font-mono text-[11px] text-wrong mt-2">Time expired: no answer selected</p>
           )}
         </div>
       )}

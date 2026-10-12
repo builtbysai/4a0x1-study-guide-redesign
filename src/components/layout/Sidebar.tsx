@@ -22,7 +22,7 @@ export const Sidebar: React.FC = () => {
   const reviewCount     = getReviewQuestions(activeQuestions, userData).length;
 
   return (
-    <aside className="hidden md:flex flex-col w-60 shrink-0 min-h-screen bg-surface border-r border-app py-6 px-4">
+    <aside className="hidden md:flex flex-col w-60 shrink-0 sticky top-0 h-screen overflow-y-auto scrollbar-none bg-surface border-r border-app py-6 px-4">
       <Link to="/" className="px-2 mb-1 block">
         <div className="font-display text-[26px] leading-none text-app tracking-wide">4A0X1</div>
         <div className="kicker mt-1">CDC Study Guide</div>
@@ -45,16 +45,16 @@ export const Sidebar: React.FC = () => {
           >
             {({ isActive }) => (
               <>
-                {isActive && <span className="absolute left-0 top-2 bottom-2 w-[3px] bg-brass rounded-full" aria-hidden />}
-                <Icon size={17} strokeWidth={isActive ? 2.2 : 1.7} className={isActive ? 'text-brass-deep' : ''} />
+                {isActive && <span className="absolute left-0 top-2 bottom-2 w-[3px] bg-accent rounded-full" aria-hidden />}
+                <Icon size={17} strokeWidth={isActive ? 2.2 : 1.7} className={isActive ? 'text-accent-deep' : ''} />
                 <span>{label}</span>
                 {label === 'Missed' && missedCount > 0 && (
-                  <span className="ml-auto bg-brick text-white text-xs font-mono px-1.5 py-0.5 rounded-ctl min-w-[20px] text-center leading-none">
+                  <span className="ml-auto bg-wrong text-white text-xs font-mono px-1.5 py-0.5 rounded-ctl min-w-[20px] text-center leading-none">
                     {missedCount > 99 ? '99+' : missedCount}
                   </span>
                 )}
                 {label === 'Review' && reviewCount > 0 && (
-                  <span className="ml-auto bg-brass text-white text-xs font-mono px-1.5 py-0.5 rounded-ctl min-w-[20px] text-center leading-none">
+                  <span className="ml-auto bg-accent text-white text-xs font-mono px-1.5 py-0.5 rounded-ctl min-w-[20px] text-center leading-none">
                     {reviewCount > 99 ? '99+' : reviewCount}
                   </span>
                 )}

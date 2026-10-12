@@ -128,7 +128,7 @@ export const QuizLauncher: React.FC = () => {
       {hasActiveSession && (
         <button
           onClick={() => navigate('/session')}
-          className="w-full mb-8 flex items-center gap-4 bg-surface border-2 border-brass rounded-card px-5 py-4 text-left hover:bg-subtle transition-colors"
+          className="w-full mb-8 flex items-center gap-4 bg-surface border-2 border-accent rounded-card px-5 py-4 text-left hover:bg-subtle transition-colors"
         >
           <div className="flex-1 min-w-0">
             <div className="font-display text-xl tracking-wide text-app">Resume in-progress session</div>
@@ -137,7 +137,7 @@ export const QuizLauncher: React.FC = () => {
               {session!.questions.length} answered
             </div>
           </div>
-          <ChevronRight size={18} className="text-brass-deep flex-shrink-0" />
+          <ChevronRight size={18} className="text-accent-deep flex-shrink-0" />
         </button>
       )}
 
@@ -149,9 +149,9 @@ export const QuizLauncher: React.FC = () => {
               key={lvl}
               onClick={() => { setActiveLevel(lvl); setSelectedGroups([]); setStartError(null); }}
               className={clsx(
-                'flex items-center gap-2 px-4 h-10 rounded-ctl text-sm font-medium border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass',
+                'flex items-center gap-2 px-4 h-10 rounded-ctl text-sm font-medium border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                 activeLevel === lvl
-                  ? 'bg-[#1A2332] text-[#F6F3EA] border-transparent dark:bg-[#E8E4D4] dark:text-[#1A2332]'
+                  ? 'bg-accent text-white dark:text-[#171512] border-transparent'
                   : 'bg-surface border-app text-muted hover:text-app'
               )}
             >
@@ -181,7 +181,7 @@ export const QuizLauncher: React.FC = () => {
               >
                 <span className={clsx(
                   'w-2 h-2 rounded-full flex-shrink-0',
-                  selected ? 'bg-brass' : 'bg-raised border border-app'
+                  selected ? 'bg-accent' : 'bg-raised border border-app'
                 )} aria-hidden />
                 <span className="flex-1 min-w-0">
                   <span className="block font-medium text-app text-[15px]">{title}</span>
@@ -200,7 +200,7 @@ export const QuizLauncher: React.FC = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-3">
             <span className="kicker">Groups</span>
-            <button onClick={() => setSelectedGroups([])} className="text-xs text-brass-deep hover:underline">
+            <button onClick={() => setSelectedGroups([])} className="text-xs text-accent-deep hover:underline">
               All groups
             </button>
           </div>
@@ -217,9 +217,9 @@ export const QuizLauncher: React.FC = () => {
                       key={`${lvl}-${num}`}
                       onClick={() => toggleGroup(lvl as CDCLevel, num)}
                       className={clsx(
-                        'px-3 h-9 rounded-ctl text-xs font-mono transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass',
+                        'px-3 h-9 rounded-ctl text-xs font-mono transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                         selected
-                          ? 'bg-[#1A2332] text-[#F6F3EA] dark:bg-[#E8E4D4] dark:text-[#1A2332]'
+                          ? 'bg-accent text-white dark:text-[#171512]'
                           : 'bg-surface border border-app text-muted hover:text-app'
                       )}
                     >
@@ -251,7 +251,7 @@ export const QuizLauncher: React.FC = () => {
               <div className="text-app text-sm font-medium">Instant feedback</div>
               <div className="text-muted text-xs mt-0.5">Always on in study mode</div>
             </div>
-            <span className="font-mono text-xs text-pine uppercase tracking-wider">On</span>
+            <span className="font-mono text-xs text-correct uppercase tracking-wider">On</span>
           </div>
         )}
         {selectedMode === 'quiz' && (
@@ -260,7 +260,7 @@ export const QuizLauncher: React.FC = () => {
               <div className="text-app text-sm font-medium">Instant feedback</div>
               <div className="text-muted text-xs mt-0.5">Off in test mode</div>
             </div>
-            <span className="font-mono text-xs text-brick uppercase tracking-wider">Off</span>
+            <span className="font-mono text-xs text-wrong uppercase tracking-wider">Off</span>
           </div>
         )}
 
@@ -292,7 +292,7 @@ export const QuizLauncher: React.FC = () => {
                   className={clsx(
                     'px-3 h-8 rounded-ctl text-xs font-mono transition-colors',
                     settings.timerSeconds === sec
-                      ? 'bg-[#1A2332] text-[#F6F3EA] dark:bg-[#E8E4D4] dark:text-[#1A2332]'
+                      ? 'bg-accent text-white dark:text-[#171512]'
                       : 'bg-surface border border-app text-muted hover:text-app'
                   )}
                 >
@@ -313,9 +313,9 @@ export const QuizLauncher: React.FC = () => {
                 key={label}
                 onClick={() => updateSettings({ sessionLimit: value })}
                 className={clsx(
-                  'px-4 h-9 rounded-ctl text-xs font-mono transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass',
+                  'px-4 h-9 rounded-ctl text-xs font-mono transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                   settings.sessionLimit === value
-                    ? 'bg-[#1A2332] text-[#F6F3EA] dark:bg-[#E8E4D4] dark:text-[#1A2332]'
+                    ? 'bg-accent text-white dark:text-[#171512]'
                     : 'bg-surface border border-app text-muted hover:text-app'
                 )}
               >
@@ -332,7 +332,7 @@ export const QuizLauncher: React.FC = () => {
       </Card>
 
       {startError && (
-        <div className="mb-4 px-4 py-3 bg-brick/10 border border-brick/30 rounded-ctl text-sm text-brick">
+        <div className="mb-4 px-4 py-3 bg-wrong/10 border border-wrong/30 rounded-ctl text-sm text-wrong">
           {startError}
         </div>
       )}

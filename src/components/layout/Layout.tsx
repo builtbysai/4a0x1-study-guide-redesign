@@ -17,7 +17,7 @@ export const Layout: React.FC = () => {
       <BottomNav />
       {storageError && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] max-w-sm w-full px-4">
-          <div className="bg-brick text-white text-sm rounded-ctl px-4 py-3 flex items-center gap-3">
+          <div className="bg-wrong text-white text-sm rounded-ctl px-4 py-3 flex items-center gap-3">
             <span className="flex-1">{storageError}</span>
             <button onClick={clearStorageError} className="font-bold text-white/80 hover:text-white flex-shrink-0" aria-label="Dismiss">✕</button>
           </div>

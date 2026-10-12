@@ -12,13 +12,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', size = 'md', fullWidth, loading, className, children, disabled, ...props }, ref) => {
-    const base = 'inline-flex items-center justify-center gap-2 font-body font-semibold rounded-ctl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2 active:translate-y-px disabled:opacity-50 disabled:cursor-not-allowed';
+    const base = 'inline-flex items-center justify-center gap-2 font-body font-semibold rounded-ctl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 active:translate-y-px disabled:opacity-50 disabled:cursor-not-allowed';
     const variants = {
-      primary:   'bg-app text-app border-2 border-app hover:bg-subtle',
+      primary:   'bg-accent text-white dark:text-[#171512] hover:opacity-90',
       secondary: 'bg-surface text-app border border-app hover:border-muted',
       ghost:     'text-muted hover:bg-raised hover:text-app',
-      danger:    'bg-brick text-white hover:opacity-90',
-      success:   'bg-pine text-white hover:opacity-90',
+      danger:    'bg-wrong text-white hover:opacity-90',
+      success:   'bg-correct text-white hover:opacity-90',
     };
     const sizes = { sm: 'h-9 px-4 text-sm', md: 'h-11 px-6 text-[15px]', lg: 'h-[52px] px-8 text-base' };
 
@@ -43,9 +43,9 @@ export const InkButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       ref={ref}
       className={clsx(
         'inline-flex items-center justify-center gap-2 font-body font-semibold rounded-ctl',
-        'bg-[#1A2332] text-[#F6F3EA] dark:bg-[#E8E4D4] dark:text-[#1A2332]',
+        'bg-accent text-white dark:text-[#171512]',
         'hover:opacity-90 active:translate-y-px transition-all duration-150',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-deep focus-visible:ring-offset-2',
         'disabled:opacity-50 disabled:cursor-not-allowed',
         size === 'sm' ? 'h-9 px-4 text-sm' : size === 'md' ? 'h-11 px-6 text-[15px]' : 'h-[52px] px-8 text-base',
         fullWidth && 'w-full',
@@ -92,10 +92,10 @@ interface BadgeProps {
 export const Badge: React.FC<BadgeProps> = ({ variant = 'default', children, className }) => {
   const variants: Record<string, string> = {
     default: 'bg-raised text-muted',
-    success: 'bg-pine/15 text-pine',
-    error:   'bg-brick/15 text-brick',
-    warning: 'bg-brass/15 text-brass-deep',
-    brand:   'bg-brass/15 text-brass-deep',
+    success: 'bg-correct/15 text-correct',
+    error:   'bg-wrong/15 text-wrong',
+    warning: 'bg-accent/12 text-accent-deep',
+    brand:   'bg-accent/12 text-accent-deep',
     neutral: 'bg-raised text-muted',
     level5:  'bg-raised text-app border border-app',
     level7:  'bg-raised text-app border border-app',
@@ -141,10 +141,10 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   value, variant = 'brand', size = 'sm', animated, className, label
 }) => {
   const colors = {
-    brand:   'bg-brass',
-    success: 'bg-pine',
-    warning: 'bg-brass-deep',
-    error:   'bg-brick',
+    brand:   'bg-accent',
+    success: 'bg-correct',
+    warning: 'bg-accent-deep',
+    error:   'bg-wrong',
   };
   const heights = { sm: 'h-1.5', md: 'h-2' };
   const clamped = Math.min(100, Math.max(0, value));
@@ -228,8 +228,8 @@ export const Toggle: React.FC<ToggleProps> = ({ checked, onChange, label, descri
       disabled={disabled}
       onClick={() => !disabled && onChange(!checked)}
       className={clsx(
-        'relative w-11 h-6 rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2 flex-shrink-0 cursor-pointer disabled:cursor-not-allowed',
-        checked ? 'bg-brass' : 'bg-raised border border-app'
+        'relative w-11 h-6 rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-deep focus-visible:ring-offset-2 flex-shrink-0 cursor-pointer disabled:cursor-not-allowed',
+        checked ? 'bg-accent' : 'bg-raised border border-app'
       )}
     >
       <span className={clsx(

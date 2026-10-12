@@ -36,12 +36,12 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           </span>
           <span className="font-mono text-[11px] text-subtle">{questionLabel}</span>
           {question.verified && (
-            <span className="font-mono text-[10px] uppercase tracking-widest text-pine">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-correct">
               Verified
             </span>
           )}
           {sessionQ.timedOut && (
-            <span className="font-mono text-[10px] uppercase tracking-widest text-brick bg-brick/10 px-1.5 py-0.5 rounded-ctl">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-wrong bg-wrong/10 px-1.5 py-0.5 rounded-ctl">
               Timed out
             </span>
           )}
@@ -54,7 +54,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               active={progress?.isFavorite}
               onClick={onToggleFavorite}
               icon={<Star size={16} />}
-              activeColor="text-brass-deep"
+              activeColor="text-accent-deep"
             />
           )}
           {onToggleFlag && (
@@ -63,7 +63,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               active={progress?.isFlagged}
               onClick={onToggleFlag}
               icon={<Flag size={16} />}
-              activeColor="text-brick"
+              activeColor="text-wrong"
             />
           )}
           {onToggleReview && (
@@ -72,7 +72,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               active={progress?.isMarkedForReview}
               onClick={onToggleReview}
               icon={<Bookmark size={16} />}
-              activeColor="text-brass-deep"
+              activeColor="text-accent-deep"
             />
           )}
         </div>
@@ -80,11 +80,11 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
       <div className="bg-surface rounded-card border border-app p-5">
         {isUnknown && (
-          <div className="mb-3 text-brass-deep text-xs font-medium">
+          <div className="mb-3 text-accent-deep text-xs font-medium">
             Official correct answer not available for this question
           </div>
         )}
-        <p className="text-app text-[17px] leading-relaxed">{question.text}</p>
+        <p className="prose-read">{question.text}</p>
         {question.sourcePageRange && (
           <p className="font-mono text-[11px] text-subtle mt-3">Ref: {question.sourcePageRange}</p>
         )}
@@ -133,7 +133,7 @@ const ActionIcon: React.FC<{
     aria-label={label}
     onClick={onClick}
     className={clsx(
-      'p-2 rounded-ctl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass',
+      'p-2 rounded-ctl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
       active ? activeColor : 'text-subtle hover:text-muted hover:bg-raised'
     )}
   >
@@ -148,8 +148,8 @@ const FeedbackPanel: React.FC<{
   timedOut: boolean;
 }> = ({ isCorrect, isUnknown, correctText, timedOut }) => {
   if (isUnknown) return (
-    <div className="rounded-card border border-brass/40 bg-brass/10 p-4">
-      <p className="text-brass-deep text-sm font-medium">
+    <div className="rounded-card border border-accent/40 bg-accent/10 p-4">
+      <p className="text-accent-deep text-sm font-medium">
         {timedOut
           ? 'Time expired. No official answer to compare against.'
           : 'Practice answer recorded. No official answer to compare against.'}
@@ -162,11 +162,11 @@ const FeedbackPanel: React.FC<{
   return (
     <div className={clsx(
       'rounded-card border-l-4 p-4 bg-surface border border-app',
-      isCorrect ? 'border-l-pine' : 'border-l-brick'
+      isCorrect ? 'border-l-correct' : 'border-l-wrong'
     )}>
       <div className={clsx(
         'font-display text-xl tracking-wide mb-1',
-        isCorrect ? 'text-pine' : 'text-brick'
+        isCorrect ? 'text-correct' : 'text-wrong'
       )}>
         {timedOut ? 'Time expired' : isCorrect ? 'Correct' : 'Not quite'}
       </div>

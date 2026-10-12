@@ -91,11 +91,11 @@ export const Stats: React.FC = () => {
         <ProgressBar value={pct(totalSeen, activeQuestions.length)} size="md" animated label="Overall coverage" />
         <div className="mt-4 grid grid-cols-3 gap-2 text-center">
           <div>
-            <div className="font-display text-2xl text-pine">{mastered.length}</div>
+            <div className="font-display text-2xl text-correct">{mastered.length}</div>
             <div className="kicker mt-1">Mastered</div>
           </div>
           <div>
-            <div className="font-display text-2xl text-brass-deep">{totalSeen - mastered.length}</div>
+            <div className="font-display text-2xl text-accent-deep">{totalSeen - mastered.length}</div>
             <div className="kicker mt-1">In progress</div>
           </div>
           <div>
@@ -111,14 +111,14 @@ export const Stats: React.FC = () => {
             <div className="bg-surface border border-app rounded-card p-5">
               <div className="kicker mb-1">Strongest</div>
               <div className="font-display text-2xl tracking-wide text-app">{strongest.name}</div>
-              <div className="font-mono text-xs text-pine mt-1">{strongest.mastery}% mastered</div>
+              <div className="font-mono text-xs text-correct mt-1">{strongest.mastery}% mastered</div>
             </div>
           )}
           {weakest && (
             <button onClick={() => navigate('/missed')} className="text-left bg-surface border border-app rounded-card p-5 hover:border-muted transition-colors">
               <div className="kicker mb-1">Needs work</div>
               <div className="font-display text-2xl tracking-wide text-app">{weakest.name}</div>
-              <div className="font-mono text-xs text-brick mt-1">{weakest.missed} missed</div>
+              <div className="font-mono text-xs text-wrong mt-1">{weakest.missed} missed</div>
             </button>
           )}
         </div>
@@ -133,15 +133,15 @@ export const Stats: React.FC = () => {
               <YAxis tick={{ fontSize: 10, fill: 'currentColor' }} className="text-subtle" domain={[0, 100]} tickLine={false} axisLine={false} />
               <Tooltip
                 formatter={(val: number) => [`${val}%`, '']}
-                contentStyle={{ background: '#1A2332', border: 'none', borderRadius: 6, fontSize: 12, color: '#F6F3EA' }}
+                contentStyle={{ background: 'rgb(var(--surface))', border: '1px solid rgb(var(--border))', borderRadius: 6, fontSize: 12, color: 'rgb(var(--text))' }}
               />
               <Bar dataKey="completion" radius={[2, 2, 0, 0]}>
                 {groupData.map(entry => (
                   <Cell
                     key={entry.name}
                     fill={
-                      entry.completion >= 80 ? '#2E7D4F' :
-                      entry.completion >= 40 ? '#8C6D1B' : '#C9C2AE'
+                      entry.completion >= 80 ? 'rgb(var(--correct))' :
+                      entry.completion >= 40 ? 'rgb(var(--accent))' : 'rgb(var(--border))'
                     }
                   />
                 ))}

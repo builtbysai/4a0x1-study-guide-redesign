@@ -2,35 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── "The quiet desk" tokens ─────────────────────────────────────────────
+   Warm paper, warm charcoal ink, one fountain-pen blue accent.
+   Green/red exist only for correct/incorrect and stay desaturated.        */
+
 @layer base {
   :root {
-    --surface:        253 251 244;
-    --surface-raised: 236 231 216;
-    --bg:             246 243 234;
-    --bg-subtle:      238 233 220;
-    --border:         219 212 190;
-    --text:           26 35 50;
-    --text-muted:     93 102 117;
-    --text-subtle:    141 148 160;
-    --brass:          140 109 27;
-    --brass-deep:     116 90 22;
-    --pine:           46 125 79;
-    --brick:          179 53 43;
+    --bg:             248 245 238;
+    --bg-subtle:      243 240 232;
+    --surface:        253 252 249;
+    --surface-raised: 241 237 228;
+    --border:         227 221 208;
+    --text:           32 29 23;
+    --text-muted:     107 101 90;
+    --text-subtle:    151 144 129;
+    --accent:         44 74 115;
+    --accent-deep:    35 60 94;
+    --correct:        61 122 82;
+    --wrong:          176 74 62;
   }
 
   .dark {
-    --surface:        24 33 50;
-    --surface-raised: 34 46 66;
-    --bg:             15 21 34;
-    --bg-subtle:      20 28 44;
-    --border:         48 62 86;
-    --text:           235 238 242;
-    --text-muted:     148 160 178;
-    --text-subtle:    110 122 140;
-    --brass:          217 169 59;
-    --brass-deep:     232 190 92;
-    --pine:           96 190 130;
-    --brick:         224 110 96;
+    --bg:             23 21 18;
+    --bg-subtle:      28 25 21;
+    --surface:        32 29 24;
+    --surface-raised: 44 40 33;
+    --border:         63 57 46;
+    --text:           237 232 220;
+    --text-muted:     168 159 142;
+    --text-subtle:    128 119 103;
+    --accent:         143 168 216;
+    --accent-deep:    168 188 226;
+    --correct:        126 186 150;
+    --wrong:          216 130 116;
   }
 
   * {
@@ -53,9 +57,9 @@
   }
 
   h1, h2, h3, h4, h5 {
-    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: 0;
   }
 }
 
@@ -68,13 +72,21 @@
   .text-muted    { color: rgb(var(--text-muted)); }
   .text-subtle   { color: rgb(var(--text-subtle)); }
 
-  /* Kicker / eyebrow label */
+  /* Small caps data label */
   .kicker {
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 0.6875rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgb(var(--text-muted));
+  }
+
+  /* Long-form reading: question stems, explanations */
+  .prose-read {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: rgb(var(--text));
   }
 
   .safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 0.5rem); }

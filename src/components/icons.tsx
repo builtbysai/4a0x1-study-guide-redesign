@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Hand-drawn icon set for the 4A0X1 study app — mission-brief aesthetic.
+ * Hand-drawn icon set for the 4A0X1 study app.
  * Drop-in replacement for lucide-react: same props (size, strokeWidth, className).
  * All icons: 24x24 viewBox, stroke=currentColor, fill=none, round caps/joins.
  */

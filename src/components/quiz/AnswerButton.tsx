@@ -31,12 +31,12 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
     <button
       className={clsx(
         'w-full flex items-center gap-3 px-4 py-3.5 rounded-ctl border text-left transition-colors duration-150',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2',
         !disabled && 'cursor-pointer active:translate-y-px',
         isNeutral   && 'border-app bg-surface hover:border-muted',
-        isSelected  && 'border-brass-deep bg-brass/10',
-        showCorrect && 'border-pine bg-pine/10',
-        showWrong   && 'border-brick bg-brick/10',
+        isSelected  && 'border-accent-deep bg-accent/10',
+        showCorrect && 'border-correct bg-correct/10',
+        showWrong   && 'border-wrong bg-wrong/10',
         revealed && !selected && !showCorrect && 'opacity-45',
         disabled && 'cursor-not-allowed',
       )}
@@ -48,9 +48,9 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
       <span className={clsx(
         'w-8 h-8 rounded-ctl flex items-center justify-center text-xs font-mono flex-shrink-0 transition-colors border',
         isNeutral   && 'bg-raised text-muted border-app',
-        isSelected  && 'bg-brass text-white border-brass',
-        showCorrect && 'bg-pine text-white border-pine',
-        showWrong   && 'bg-brick text-white border-brick',
+        isSelected  && 'bg-accent text-white dark:text-[#171512] border-accent',
+        showCorrect && 'bg-correct text-white dark:text-[#171512] border-correct',
+        showWrong   && 'bg-wrong text-white dark:text-[#171512] border-wrong',
         revealed && !selected && !showCorrect && 'bg-raised text-subtle border-app',
       )} aria-hidden>
         {revealed && selected && correct !== null
@@ -73,7 +73,7 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
 
       {showCorrect && !selected && (
         <span className="ml-auto flex-shrink-0">
-          <Check size={16} className="text-pine" strokeWidth={2.5} />
+          <Check size={16} className="text-correct" strokeWidth={2.5} />
         </span>
       )}
     </button>

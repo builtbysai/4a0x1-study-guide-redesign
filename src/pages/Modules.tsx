@@ -63,13 +63,13 @@ export const Modules: React.FC = () => {
           placeholder="Search groups"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="flex-1 h-11 px-4 bg-surface border border-app rounded-ctl text-[15px] text-app placeholder:text-subtle focus:outline-none focus:ring-2 focus:ring-brass"
+          className="flex-1 h-11 px-4 bg-surface border border-app rounded-ctl text-[15px] text-app placeholder:text-subtle focus:outline-none focus:ring-2 focus:ring-accent"
           aria-label="Search groups"
         />
         <select
           value={sort}
           onChange={e => setSort(e.target.value as typeof sort)}
-          className="h-11 px-3 bg-surface border border-app rounded-ctl text-sm text-app focus:outline-none focus:ring-2 focus:ring-brass"
+          className="h-11 px-3 bg-surface border border-app rounded-ctl text-sm text-app focus:outline-none focus:ring-2 focus:ring-accent"
           aria-label="Sort by"
         >
           <option value="number">Number</option>
@@ -89,12 +89,12 @@ export const Modules: React.FC = () => {
             <button
               key={`${level}-${groupNumber}`}
               onClick={() => navigate(`/modules/${routeId}`)}
-              className="w-full text-left px-5 py-4 hover:bg-subtle transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brass"
+              className="w-full text-left px-5 py-4 hover:bg-subtle transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
             >
               <div className="flex items-center gap-4">
                 <span className={clsx(
                   'font-mono text-xs w-8 h-8 rounded-ctl border flex items-center justify-center flex-shrink-0',
-                  isComplete ? 'bg-pine/10 text-pine border-pine/30' : 'bg-raised text-muted border-app'
+                  isComplete ? 'bg-correct/10 text-correct border-correct/30' : 'bg-raised text-muted border-app'
                 )}>
                   {String(groupNumber).padStart(2, '0')}
                 </span>
@@ -109,7 +109,7 @@ export const Modules: React.FC = () => {
                     <ProgressBar value={completionPct} size="sm" className="flex-1 max-w-[220px]" />
                     <span className="font-mono text-xs text-muted">{completionPct}%</span>
                     {masteryPct > 0 && (
-                      <span className="font-mono text-xs text-brass-deep">{masteryPct}% mastered</span>
+                      <span className="font-mono text-xs text-accent-deep">{masteryPct}% mastered</span>
                     )}
                     {progress.lastStudiedAt && (
                       <span className="font-mono text-[11px] text-subtle hidden sm:inline">{formatDate(progress.lastStudiedAt)}</span>

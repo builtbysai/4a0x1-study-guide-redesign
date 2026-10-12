@@ -46,7 +46,7 @@ class ErrorBoundary extends React.Component<
             <p className="text-muted text-sm mb-4">{this.state.message}</p>
             <button
               onClick={() => window.location.reload()}
-              className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-ctl bg-[#1A2332] text-[#F6F3EA] dark:bg-[#E8E4D4] dark:text-[#1A2332] font-semibold text-sm hover:opacity-90 transition-opacity"
+              className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-ctl bg-accent text-white dark:text-[#171512] font-semibold text-sm hover:opacity-90 transition-opacity"
             >
               Reload App
             </button>
@@ -62,7 +62,7 @@ class ErrorBoundary extends React.Component<
 
 const PageSkeleton: React.FC = () => (
   <div className="flex items-center justify-center min-h-[50vh]">
-    <div className="h-6 w-6 rounded-full border-2 border-brass border-t-transparent animate-spin" aria-label="Loading" />
+    <div className="h-6 w-6 rounded-full border-2 border-accent border-t-transparent animate-spin" aria-label="Loading" />
   </div>
 );
 
@@ -80,7 +80,7 @@ const NotFound: React.FC = () => {
         </p>
         <button
           onClick={() => navigate('/')}
-          className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-ctl bg-[#1A2332] text-[#F6F3EA] dark:bg-[#E8E4D4] dark:text-[#1A2332] font-semibold text-sm hover:opacity-90 transition-opacity"
+          className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-ctl bg-accent text-white dark:text-[#171512] font-semibold text-sm hover:opacity-90 transition-opacity"
         >
           Go Home
         </button>
